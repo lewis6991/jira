@@ -8,11 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version:
-          - '3.10'
-          # - '3.11'
-          # - '3.12'
-          # - '3.14'
+        include:
+          - python-version: '3.10'
+            tox-env: 'py310'
+          # - python-version: '3.11'
+          #   tox-env: 'py311'
+          # - python-version: '3.12'
+          #   tox-env: 'py312'
 
     steps:
       - uses: actions/checkout@v5
@@ -30,4 +32,4 @@ jobs:
           python -m pip install tox tox-gh-actions
       - name: Test with tox
         # run only the env that matches the runner Python (e.g. 3.10 -> py310)
-        run: tox -e ${{ 'py' + matrix.python-version.replace('.','') }}
+        run: tox -e ${{ matrix.tox-env }}
