@@ -11,11 +11,11 @@ import logging
 import re
 import time
 from typing import TYPE_CHECKING, Any, cast
-from typing_extensions import override
 from urllib.parse import ParseResult, urlparse, urlunparse
 
 from requests import Response
 from requests.structures import CaseInsensitiveDict
+from typing_extensions import override
 
 from jira.exceptions import JIRAError
 from jira.resilientsession import ResilientSession, parse_errors
